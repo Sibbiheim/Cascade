@@ -13,10 +13,10 @@ The FlyoutService.SupportNestedFlyout attached property provides support for sec
 
 ###Internal properties
 ####`FlyoutContext`
-The FlyoutService.FlyoutContext attached property is used internally to correctly position cascading Flyouts. The getter and setter are made public to provide a way for custom Flyout implementations to programmaticaly show subsequent flyouts. It is not necessary nor really supported to set this value in XAML.
+The FlyoutService.FlyoutContext attached property is used internally to correctly position cascading Flyouts. The getter and setter are made public to provide a way for custom Flyout implementations to programmaticaly show subsequent flyouts. It is not supported to set this value in XAML.
 
 ##How to use
-Developers have the option of including CascadeCS as a reference to their Windows 8.1 XAML app project, or including the code files directly in their own project.
+Developers have the option of including CascadeCS as a reference to their Windows 8.1 XAML app project, or including the code files directly in their own project. Equally functional C# and C++ versions of the library are provided.
 
 ##Questions, Suggestions, Issues
 Please [file a bug](https://github.com/Sibbiheim/Cascade/issues/new), or [contact us](mailto:github@sibbiheim.com)
