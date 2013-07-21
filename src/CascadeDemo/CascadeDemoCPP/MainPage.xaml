@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="CascadeDemoCPP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CascadeDemoCPP"
+    xmlns:cascade="using:Sibbiheim.Cascade"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <MenuFlyout x:Key="flyout">
+            <MenuFlyoutItem Text="Open a custom secondary flyout">
+                <cascade:FlyoutService.Flyout>
+                    <Flyout>
+                        <TextBlock Text="This is a secondary flyout" />
+                    </Flyout>
+                </cascade:FlyoutService.Flyout>
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="Open a secondary menu flyout">
+                <cascade:FlyoutService.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Open a tertiary flyout">
+                            <cascade:FlyoutService.Flyout>
+                                <Flyout>
+                                    <TextBlock Text="This is a tertiary flyout" />
+                                </Flyout>
+                            </cascade:FlyoutService.Flyout>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <ToggleMenuFlyoutItem Text="Arbitrary toggle menu flyout item">
+                            <cascade:FlyoutService.Flyout>
+                                <Flyout>
+                                    <TextBlock Text="Yes, toggle items can have flyouts, too. " />
+                                </Flyout>
+                            </cascade:FlyoutService.Flyout>
+                        </ToggleMenuFlyoutItem>
+                        <MenuFlyoutItem Text="Open a flyout with full placement">
+                            <cascade:FlyoutService.Flyout>
+                                <local:FlyoutExample />
+                            </cascade:FlyoutService.Flyout>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </cascade:FlyoutService.Flyout>
+            </MenuFlyoutItem>
+        </MenuFlyout>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Code-free popups on any FrameworkElement" VerticalAlignment="Center"
+                       cascade:FlyoutService.Flyout="{StaticResource flyout}" />
+
+            <AppBarButton VerticalAlignment="Center" Label="Open a menu flyout"
+                      cascade:FlyoutService.SupportNestedFlyouts="True" Flyout="{StaticResource flyout}" />
+        </StackPanel>
+    </Grid>
+</Page>

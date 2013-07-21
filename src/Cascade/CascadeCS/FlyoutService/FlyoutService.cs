@@ -27,33 +27,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Sibbiheim.Cascade
 {
-    public partial class FlyoutService
+    public partial class FlyoutService : DependencyObject
     {
-        private static readonly DependencyProperty FlyoutContextProperty = DependencyProperty.RegisterAttached(
-            "FlyoutContext", typeof(FrameworkElement), typeof(FlyoutService), new PropertyMetadata(null));
-
-        public static FrameworkElement GetFlyoutContext(DependencyObject obj)
-        {
-            return obj.GetValue(FlyoutContextProperty) as FrameworkElement;
-        }
-
-        public static void SetFlyoutContext(DependencyObject obj, FrameworkElement value)
-        {
-            obj.SetValue(FlyoutContextProperty, value);
-
-            MenuFlyout menu = obj as MenuFlyout;
-            if (menu != null)
-            {
-                foreach (MenuFlyoutItemBase menuItem in menu.Items)
-                {
-                    menuItem.SetValue(FlyoutContextProperty, value);
-                }
-            }
-        }
     }
 }

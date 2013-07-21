@@ -35,11 +35,15 @@ using Windows.UI.Xaml.Media;
 
 namespace Sibbiheim.Cascade
 {
-    public partial class FlyoutService : DependencyObject
+    public partial class FlyoutService
     {
-        public static readonly DependencyProperty FlyoutProperty = DependencyProperty.RegisterAttached(
+        private static readonly DependencyProperty _flyoutProperty = DependencyProperty.RegisterAttached(
             "Flyout", typeof(FlyoutBase), typeof(FlyoutService), new PropertyMetadata(null, OnFlyoutChanged));
 
+        public static DependencyProperty FlyoutProperty
+        {
+            get { return _flyoutProperty; }
+        }
         public static FlyoutBase GetFlyout(FrameworkElement element)
         {
             return element.GetValue(FlyoutProperty) as FlyoutBase;

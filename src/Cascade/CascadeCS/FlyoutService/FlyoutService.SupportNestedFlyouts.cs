@@ -33,10 +33,15 @@ using Windows.UI.Xaml.Data;
 
 namespace Sibbiheim.Cascade
 {
-    public partial class FlyoutService : DependencyObject
+    public partial class FlyoutService
     {
-        public static readonly DependencyProperty SupportNestedFlyoutsProperty = DependencyProperty.RegisterAttached(
+        private static readonly DependencyProperty _supportNestedFlyoutsProperty = DependencyProperty.RegisterAttached(
             "SupportNestedFlyouts", typeof(Boolean), typeof(FlyoutService), new PropertyMetadata(false, OnSupportNestedFlyoutsChanged));
+
+        public static DependencyProperty SupportNestedFlyoutsProperty
+        {
+            get { return _supportNestedFlyoutsProperty; }
+        }
 
         public static Boolean GetSupportNestedFlyouts(Button element)
         {
@@ -57,16 +62,16 @@ namespace Sibbiheim.Cascade
             {
                 if (supportNestedFlyouts)
                 {
-                    button.Click += OnButtonWithFlyoutClick;
+                    button.Click += OnButtonWithFlyoutClicked;
                 }
                 else
                 {
-                    button.Click -= OnButtonWithFlyoutClick;
+                    button.Click -= OnButtonWithFlyoutClicked;
                 }
             }
         }
 
-        private static void OnButtonWithFlyoutClick(object sender, RoutedEventArgs e)
+        private static void OnButtonWithFlyoutClicked(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             if (button != null)
