@@ -27,7 +27,12 @@ namespace CascadeDemoCS
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyout flyout = new MenuFlyout() { Placement = FlyoutPlacementMode.Bottom };
-            flyout.Items.Add(new MenuFlyoutItem() { Text = "From a design perspective, though, I wouldn't recommend it." });
+
+            MenuFlyoutItem item = new MenuFlyoutItem();
+            item.Text = "From a design perspective, though, I wouldn't recommend it.";
+            item.SetBinding(MenuFlyoutItem.ForegroundProperty, new Binding());
+
+            flyout.Items.Add(item);
 
             FrameworkElement flyoutContext = Sibbiheim.Cascade.FlyoutService.GetFlyoutContext(this);
             Sibbiheim.Cascade.FlyoutService.SetFlyoutContext(flyout, flyoutContext);

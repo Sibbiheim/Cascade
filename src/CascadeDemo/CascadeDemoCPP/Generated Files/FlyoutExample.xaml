@@ -9,7 +9,7 @@
     Placement="Full">
     
     <StackPanel HorizontalAlignment="Left">
-        <TextBlock Text="You can also open further flyouts programmatically from custom flyouts, keeping the same context." MaxWidth="300" TextWrapping="WrapWholeWords" />
+        <TextBlock Text="You can also open further flyouts programmatically from custom flyouts, keeping the same context." MaxWidth="300" Foreground="{Binding}" TextWrapping="WrapWholeWords" />
         <Button x:ConnectionId='1' Content="Open yet another flyout!"                      />
     </StackPanel>
 </Flyout>

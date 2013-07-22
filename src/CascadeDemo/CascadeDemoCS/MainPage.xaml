@@ -10,10 +10,11 @@
 
     <Page.Resources>
         <MenuFlyout x:Key="flyout">
+            <MenuFlyoutItem Text="Note the data context coloring" Foreground="{Binding}" />
             <MenuFlyoutItem Text="Open a custom secondary flyout">
                 <cascade:FlyoutService.Flyout>
                     <Flyout>
-                        <TextBlock Text="This is a secondary flyout" />
+                        <TextBlock Text="This is a secondary flyout" Foreground="{Binding}" />
                     </Flyout>
                 </cascade:FlyoutService.Flyout>
             </MenuFlyoutItem>
@@ -23,12 +24,12 @@
                         <MenuFlyoutItem Text="Open a tertiary flyout">
                             <cascade:FlyoutService.Flyout>
                                 <Flyout>
-                                    <TextBlock Text="This is a tertiary flyout" />
+                                    <TextBlock Text="This is a tertiary flyout" Foreground="{Binding}" />
                                 </Flyout>
                             </cascade:FlyoutService.Flyout>
                         </MenuFlyoutItem>
                         <MenuFlyoutSeparator />
-                        <ToggleMenuFlyoutItem Text="Arbitrary toggle menu flyout item">
+                        <ToggleMenuFlyoutItem Text="Arbitrary toggle menu flyout item" Foreground="{Binding}">
                             <cascade:FlyoutService.Flyout>
                                 <Flyout>
                                     <TextBlock Text="Yes, toggle items can have flyouts, too. " />
@@ -44,15 +45,18 @@
                 </cascade:FlyoutService.Flyout>
             </MenuFlyoutItem>
         </MenuFlyout>
+        
+        <SolidColorBrush x:Key="textBlockDataContext" Color="Orange" />
+        <SolidColorBrush x:Key="buttonDataContext" Color="Blue" />
     </Page.Resources>
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" DataContext="{StaticResource textBlockDataContext}">
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Code-free popups on any FrameworkElement" VerticalAlignment="Center"
                        cascade:FlyoutService.Flyout="{StaticResource flyout}" />
 
             <AppBarButton VerticalAlignment="Center" Label="Open a menu flyout"
-                      cascade:FlyoutService.SupportNestedFlyouts="True" Flyout="{StaticResource flyout}" />
+                      cascade:FlyoutService.SupportNestedFlyouts="True" Flyout="{StaticResource flyout}" DataContext="{StaticResource buttonDataContext}" />
         </StackPanel>
     </Grid>
 </Page>

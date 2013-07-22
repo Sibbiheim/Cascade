@@ -34,6 +34,7 @@ void CascadeDemoCPP::FlyoutExample::Button_Click(Platform::Object^ sender, Windo
 	
 	MenuFlyoutItem^ item = ref new MenuFlyoutItem();
 	item->Text = "From a design perspective, though, I wouldn't recommend it.";
+	item->SetBinding(MenuFlyoutItem::ForegroundProperty, ref new Binding());
 
 	flyout->Items->Append(item);
 
