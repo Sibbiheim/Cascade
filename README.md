@@ -1,9 +1,9 @@
 #Cascade
 
-Cascade is a library targeting Windows 8.1 'Metro' that aims to provide tools that reduce the amount of code and codebehind necessary to implement features in XAML.
+Cascade is a library targeting Windows 8.1 'Metro' that aims to provide tools that reduce the amount of code and codebehind necessary to implement features in XAML. The library is provided in both C# and C++, so it also serves as a good demonstration of how developing Windows 8 Store apps in C# or C++ are remarkably similar.
 
 ##Features
-The `FlyoutService` class provides attached properties that extend the new Flyout and Button.Flyout features of Windows 8.1 and allow developers to create more complex Flyout behavior without requiring trivial event handlers in the codebehind. It exposes the following attached properties.
+The `FlyoutService` class provides attached properties that extend the new Flyout and Button.Flyout features of Windows 8.1 and allow developers to create more complex Flyout behavior without requiring trivial event handlers in the codebehind. As with the Button.Flyout property, DataContexts are maintained for all cascading Flyouts. It exposes the following attached properties.
 
 ###`Flyout`
 The FlyoutService.Flyout attached property enables Flyouts to be attached to any FrameworkElement, and automatically handles that FrameworkElement's Tapped event to show the Flyout. This can be used, for example, to add a flyout to a TextBlock as well as to add a secondary flyout to a MenuFlyoutItem. It uses the `FlyoutContext` attached property to ensure that every cascading Flyout control appears on the screen correctly relative to the original control.
