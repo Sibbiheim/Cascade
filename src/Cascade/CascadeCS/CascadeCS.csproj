@@ -115,6 +115,7 @@
     <Compile Include="FlyoutService\FlyoutService.FlyoutContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlyoutService\FlyoutService.SettingsFlyout.cs" />
     <Compile Include="FlyoutService\FlyoutService.SupportNestedFlyouts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
