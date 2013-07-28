@@ -57,6 +57,12 @@
 
             <AppBarButton VerticalAlignment="Center" Label="Open a menu flyout"
                       cascade:FlyoutService.SupportNestedFlyouts="True" Flyout="{StaticResource flyout}" DataContext="{StaticResource buttonDataContext}" />
+            
+            <AppBarButton VerticalAlignment="Center" Label="Open a settings flyout">
+                <cascade:FlyoutService.SettingsFlyout>
+                    <local:SettingsFlyoutExample />
+                </cascade:FlyoutService.SettingsFlyout>
+            </AppBarButton>
         </StackPanel>
     </Grid>
 </Page>

@@ -20,6 +20,9 @@
     <ClCompile Include="FlyoutService.SupportNestedFlyouts.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
+    <ClCompile Include="FlyoutService.SettingsFlyout.cpp">
+      <Filter>FlyoutService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

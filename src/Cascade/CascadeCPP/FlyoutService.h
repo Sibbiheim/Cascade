@@ -55,6 +55,30 @@ namespace Sibbiheim
 
 			static void OnFlyoutChanged(Windows::UI::Xaml::DependencyObject^ d, Windows::UI::Xaml::DependencyPropertyChangedEventArgs^ e);
 			static void OnFlyoutOwnerTapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e);
+			
+#pragma endregion
+
+#pragma region SettingsFlyout
+
+		private:
+
+			static Windows::UI::Xaml::DependencyProperty^ _settingsFlyoutProperty;
+			static Windows::UI::Xaml::DependencyProperty^ _settingsFlyoutOwnerTappedTokenProperty;
+
+		public:
+
+			static property Windows::UI::Xaml::DependencyProperty^ SettingsFlyoutProperty
+			{
+				Windows::UI::Xaml::DependencyProperty^ get();
+			}
+
+			static Windows::UI::Xaml::Controls::SettingsFlyout^ GetSettingsFlyout(Windows::UI::Xaml::FrameworkElement^ element);
+			static void SetSettingsFlyout(Windows::UI::Xaml::FrameworkElement^ element, Windows::UI::Xaml::Controls::SettingsFlyout^ value);
+
+		private:
+
+			static void OnSettingsFlyoutChanged(Windows::UI::Xaml::DependencyObject^ d, Windows::UI::Xaml::DependencyPropertyChangedEventArgs^ e);
+			static void OnSettingsFlyoutOwnerTapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e);
 
 #pragma endregion
 

@@ -12,10 +12,12 @@
 #include "FlyoutExample.xaml.h"
 #include "App.xaml.h"
 #include "MainPage.xaml.h"
+#include "SettingsFlyoutExample.xaml.h"
 
 #include "FlyoutExample.g.hpp"
 #include "App.g.hpp"
 #include "MainPage.g.hpp"
+#include "SettingsFlyoutExample.g.hpp"
 
 ::Platform::Collections::Vector<::Windows::UI::Xaml::Markup::IXamlMetadataProvider^>^ ::XamlTypeInfo::InfoProvider::XamlTypeInfoProvider::OtherProviders::get()
 {
@@ -84,6 +86,16 @@
         return ref new XamlSystemBaseType(typeName);
     }
 
+    if (typeName == L"Windows.UI.Xaml.Controls.SettingsFlyout")
+    {
+        return ref new XamlSystemBaseType(typeName);
+    }
+
+    if (typeName == L"Windows.UI.Xaml.Controls.ContentControl")
+    {
+        return ref new XamlSystemBaseType(typeName);
+    }
+
     if (typeName == L"Windows.UI.Xaml.Controls.Page")
     {
         return ref new XamlSystemBaseType(typeName);
@@ -112,7 +124,20 @@
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Metadata;
         userType->AddMemberName(L"Flyout");
         userType->AddMemberName(L"SupportNestedFlyouts");
+        userType->AddMemberName(L"SettingsFlyout");
         userType->AddMemberName(L"FlyoutContext");
+        return userType;
+    }
+
+    if (typeName == L"CascadeDemoCPP.SettingsFlyoutExample")
+    {
+        ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Windows.UI.Xaml.Controls.SettingsFlyout"));
+        userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
+        userType->Activator =
+            []() -> Platform::Object^ 
+            {
+                return ref new ::CascadeDemoCPP::SettingsFlyoutExample(); 
+            };
         return userType;
     }
 
@@ -169,6 +194,26 @@
             [](Object^ instance, Object^ value) -> void
             {
                 ::Sibbiheim::Cascade::FlyoutService::SetSupportNestedFlyouts((::Windows::UI::Xaml::Controls::Button^)instance, (::Platform::Boolean)value);
+            };
+        return xamlMember;
+    }
+
+    if (longMemberName == L"Sibbiheim.Cascade.FlyoutService.SettingsFlyout")
+    {
+        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"SettingsFlyout", L"Windows.UI.Xaml.Controls.SettingsFlyout");
+        xamlMember->SetTargetTypeName(L"Windows.UI.Xaml.FrameworkElement");
+        xamlMember->SetIsDependencyProperty();
+        xamlMember->SetIsAttachable();
+        xamlMember->Getter =
+            [](Object^ instance) -> Object^
+            {
+                return ::Sibbiheim::Cascade::FlyoutService::GetSettingsFlyout((::Windows::UI::Xaml::FrameworkElement^)instance);
+            };
+
+        xamlMember->Setter =
+            [](Object^ instance, Object^ value) -> void
+            {
+                ::Sibbiheim::Cascade::FlyoutService::SetSettingsFlyout((::Windows::UI::Xaml::FrameworkElement^)instance, (::Windows::UI::Xaml::Controls::SettingsFlyout^)value);
             };
         return xamlMember;
     }
