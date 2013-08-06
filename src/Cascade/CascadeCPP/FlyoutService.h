@@ -82,6 +82,30 @@ namespace Sibbiheim
 
 #pragma endregion
 
+#pragma region Popup
+
+		private:
+
+			static Windows::UI::Xaml::DependencyProperty^ _popupProperty;
+			static Windows::UI::Xaml::DependencyProperty^ _popupOwnerTappedTokenProperty;
+
+		public:
+
+			static property Windows::UI::Xaml::DependencyProperty^ PopupProperty
+			{
+				Windows::UI::Xaml::DependencyProperty^ get();
+			}
+
+			static Windows::UI::Xaml::Controls::Primitives::Popup^ GetPopup(Windows::UI::Xaml::FrameworkElement^ element);
+			static void SetPopup(Windows::UI::Xaml::FrameworkElement^ element, Windows::UI::Xaml::Controls::Primitives::Popup^ value);
+
+		private:
+
+			static void OnPopupChanged(Windows::UI::Xaml::DependencyObject^ d, Windows::UI::Xaml::DependencyPropertyChangedEventArgs^ e);
+			static void OnPopupOwnerTapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e);
+
+#pragma endregion
+
 #pragma region SupportNestedFlyouts
 
 		private:

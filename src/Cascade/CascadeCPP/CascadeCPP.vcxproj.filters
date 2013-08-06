@@ -23,6 +23,9 @@
     <ClCompile Include="FlyoutService.SettingsFlyout.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
+    <ClCompile Include="FlyoutService.Popup.cpp">
+      <Filter>FlyoutService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

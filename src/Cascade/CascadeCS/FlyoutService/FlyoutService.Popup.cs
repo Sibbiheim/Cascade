@@ -27,60 +27,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
 namespace Sibbiheim.Cascade
 {
     public partial class FlyoutService
     {
-        private static DependencyProperty _settingsFlyoutProperty = DependencyProperty.RegisterAttached(
-            "SettingsFlyout", typeof(SettingsFlyout), typeof(FlyoutService), new PropertyMetadata(null, OnSettingsFlyoutChanged));
+        private static DependencyProperty _popupProperty = DependencyProperty.RegisterAttached(
+            "Popup", typeof(Popup), typeof(FlyoutService), new PropertyMetadata(null, OnPopupChanged));
 
-        public static DependencyProperty SettingsFlyoutProperty
+        public static DependencyProperty PopupProperty
         {
-            get { return _settingsFlyoutProperty; }
+            get { return _popupProperty; }
         }
 
-        public static SettingsFlyout GetSettingsFlyout(FrameworkElement element)
+        public static Popup GetPopup(FrameworkElement element)
         {
-            return element.GetValue(SettingsFlyoutProperty) as SettingsFlyout;
+            return element.GetValue(PopupProperty) as Popup;
         }
 
-        public static void SetSettingsFlyout(FrameworkElement element, SettingsFlyout value)
+        public static void SetPopup(FrameworkElement element, Popup value)
         {
-            element.SetValue(SettingsFlyoutProperty, value);
+            element.SetValue(PopupProperty, value);
         }
 
-        private static void OnSettingsFlyoutChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnPopupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             FrameworkElement element = d as FrameworkElement;
-            SettingsFlyout flyout = e.NewValue as SettingsFlyout;
+            Popup popup = e.NewValue as Popup;
 
             if (element != null)
             {
-                if (flyout != null)
+                if (popup != null)
                 {
-                    element.Tapped += OnSettingsFlyoutOwnerTapped;
+                    element.Tapped += OnPopupOwnerTapped;
                 }
                 else
                 {
-                    element.Tapped -= OnSettingsFlyoutOwnerTapped;
+                    element.Tapped -= OnPopupOwnerTapped;
                 }
             }
         }
 
-        static void OnSettingsFlyoutOwnerTapped(object sender, TappedRoutedEventArgs e)
+        private static void OnPopupOwnerTapped(object sender, TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;
 
             if (element != null)
             {
-                SettingsFlyout flyout = GetSettingsFlyout(element);
+                Popup popup = GetPopup(element);
 
-                if (flyout != null)
+                if (popup != null)
                 {
-                    flyout.ShowIndependent();
+                    popup.IsOpen = true;
                 }
             }
         }

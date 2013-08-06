@@ -220,6 +220,7 @@
   <ItemGroup>
     <ClCompile Include="FlyoutService.Flyout.cpp" />
     <ClCompile Include="FlyoutService.FlyoutContext.cpp" />
+    <ClCompile Include="FlyoutService.Popup.cpp" />
     <ClCompile Include="FlyoutService.SettingsFlyout.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
