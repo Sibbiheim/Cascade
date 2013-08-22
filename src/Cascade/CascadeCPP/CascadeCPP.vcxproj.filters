@@ -2,11 +2,11 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Resources">
-      <UniqueIdentifier>c2d278b7-0bd7-4afc-b9fa-a1d4b63189d3</UniqueIdentifier>
+      <UniqueIdentifier>e7ae66f2-35e5-4246-af0d-42c7b7b56828</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="FlyoutService">
-      <UniqueIdentifier>{23498b00-062d-4ec8-9a56-8ce1d8d68032}</UniqueIdentifier>
+      <UniqueIdentifier>{cb22ad5b-2901-4727-ad2f-a5fb315bd909}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -17,13 +17,13 @@
     <ClCompile Include="FlyoutService.FlyoutContext.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
-    <ClCompile Include="FlyoutService.SupportNestedFlyouts.cpp">
+    <ClCompile Include="FlyoutService.Popup.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
     <ClCompile Include="FlyoutService.SettingsFlyout.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
-    <ClCompile Include="FlyoutService.Popup.cpp">
+    <ClCompile Include="FlyoutService.SupportNestedFlyouts.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
   </ItemGroup>

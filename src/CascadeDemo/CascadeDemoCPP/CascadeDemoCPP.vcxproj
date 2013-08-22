@@ -195,7 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Cascade\CascadeCPP\CascadeCPP.vcxproj">
-      <Project>{cb69504f-0638-4c91-93a1-8a59fe93b5a3}</Project>
+      <Project>{05407b60-2b99-42b8-88ab-d181fcfe7910}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

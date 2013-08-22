@@ -28,12 +28,14 @@
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="FlyoutExample.xaml.cpp" />
+    <ClCompile Include="SettingsFlyoutExample.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
     <ClInclude Include="FlyoutExample.xaml.h" />
+    <ClInclude Include="SettingsFlyoutExample.xaml.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
