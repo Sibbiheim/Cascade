@@ -9,6 +9,19 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <cascade:CascadeConverter x:Key="falseToVisibleConverter">
+            <cascade:CascadeConverter.Converters>
+                <cascade:NegationConverter />
+                <cascade:BooleanToVisibilityConverter />
+            </cascade:CascadeConverter.Converters>
+        </cascade:CascadeConverter>
+        
+        <cascade:CascadeConverter x:Key="trueToVisibleConverter">
+            <cascade:CascadeConverter.Converters>
+                <cascade:BooleanToVisibilityConverter />
+            </cascade:CascadeConverter.Converters>
+        </cascade:CascadeConverter>
+        
         <MenuFlyout x:Key="flyout">
             <MenuFlyoutItem Text="Note the data context coloring" Foreground="{Binding}" />
             <MenuFlyoutItem Text="Open a custom secondary flyout">
@@ -63,6 +76,10 @@
                     <local:SettingsFlyoutExample />
                 </cascade:FlyoutService.SettingsFlyout>
             </AppBarButton>
+            
+            <ToggleButton x:Name="cascadeToggle" Content="Cascade Converter" />
+            <Button Content="Checked" Visibility="{Binding ElementName=cascadeToggle, Path=IsChecked, Converter={StaticResource trueToVisibleConverter}}" />
+            <Button Content="Unchecked" Visibility="{Binding ElementName=cascadeToggle, Path=IsChecked, Converter={StaticResource falseToVisibleConverter}}" />
         </StackPanel>
     </Grid>
 </Page>
