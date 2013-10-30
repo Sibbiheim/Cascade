@@ -219,17 +219,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BooleanNegationConverter.h" />
+    <ClInclude Include="BooleanToBrushConverter.h" />
+    <ClInclude Include="BooleanToObjectConverter.h" />
+    <ClInclude Include="BooleanToVisibilityConverter.h" />
     <ClInclude Include="CascadeConverter.h" />
+    <ClInclude Include="CommandService.h" />
+    <ClInclude Include="EnumEqualsConverter.h" />
     <ClInclude Include="FlyoutService.h" />
+    <ClInclude Include="NullToBooleanConverter.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="StrategyConverter.h" />
+    <ClInclude Include="StrategyStyleSelector.h" />
+    <ClInclude Include="StrategyTemplateSelector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BooleanNegationConverter.cpp" />
+    <ClCompile Include="BooleanToBrushConverter.cpp" />
+    <ClCompile Include="BooleanToObjectConverter.cpp" />
+    <ClCompile Include="BooleanToVisibilityConverter.cpp" />
     <ClCompile Include="CascadeConverter.cpp" />
+    <ClCompile Include="CommandService.ItemClickCommand.cpp" />
+    <ClCompile Include="EnumEqualsConverter.cpp" />
     <ClCompile Include="FlyoutService.Flyout.cpp" />
     <ClCompile Include="FlyoutService.FlyoutContext.cpp" />
     <ClCompile Include="FlyoutService.Popup.cpp" />
     <ClCompile Include="FlyoutService.SettingsFlyout.cpp" />
     <ClCompile Include="FlyoutService.SupportNestedFlyouts.cpp" />
+    <ClCompile Include="NullToBooleanConverter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -238,6 +255,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StrategyConverter.cpp" />
+    <ClCompile Include="StrategyStyleSelector.cpp" />
+    <ClCompile Include="StrategyTemplateSelector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

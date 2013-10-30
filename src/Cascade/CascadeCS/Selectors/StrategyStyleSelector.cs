@@ -33,7 +33,7 @@ namespace Sibbiheim.Cascade
 {
     public sealed class StrategyStyleSelectingArgs : EventArgs
     {
-        public StrategyStyleSelectingArgs(object item, DependencyObject container)
+        internal StrategyStyleSelectingArgs(object item, DependencyObject container)
         {
             Item = item;
             Container = container;
@@ -53,9 +53,9 @@ namespace Sibbiheim.Cascade
             Styles = new List<Style>();
         }
 
-        public List<Style> Styles { get; set; }
-
         public event EventHandler<StrategyStyleSelectingArgs> Selecting;
+
+        public List<Style> Styles { get; set; }
 
         protected override Style SelectStyleCore(object item, DependencyObject container)
         {

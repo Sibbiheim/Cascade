@@ -31,9 +31,9 @@ using Windows.UI.Xaml.Data;
 
 namespace Sibbiheim.Cascade
 {
-    public sealed class FlyweightConvertingArgs : EventArgs
+    public sealed class StrategyConvertingArgs : EventArgs
     {
-        public FlyweightConvertingArgs(object value, Type targetType, object parameter, string language)
+        internal StrategyConvertingArgs(object value, Type targetType, object parameter, string language)
         {
             Value = value;
             TargetType = targetType;
@@ -41,28 +41,28 @@ namespace Sibbiheim.Cascade
             Language = language;
         }
 
-        public object Value { get; set; }
+        public object Value { get; private set; }
 
-        public Type TargetType { get; set; }
+        public Type TargetType { get; private set; }
 
-        public object Parameter { get; set; }
+        public object Parameter { get; private set; }
 
-        public string Language { get; set; }
+        public string Language { get; private set; }
 
         public object Result { get; set; }
     }
 
-    public sealed class FlyweightConverter : IValueConverter
+    public sealed class StrategyConverter : IValueConverter
     {
-        public event EventHandler<FlyweightConvertingArgs> Converting;
+        public event EventHandler<StrategyConvertingArgs> Converting;
 
-        public event EventHandler<FlyweightConvertingArgs> ConvertingBack;
+        public event EventHandler<StrategyConvertingArgs> ConvertingBack;
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (Converting != null)
             {
-                FlyweightConvertingArgs args = new FlyweightConvertingArgs(value, targetType, parameter, language);
+                StrategyConvertingArgs args = new StrategyConvertingArgs(value, targetType, parameter, language);
                 Converting(this, args);
                 return args.Result;
             }
@@ -76,7 +76,7 @@ namespace Sibbiheim.Cascade
         {
             if (ConvertingBack != null)
             {
-                FlyweightConvertingArgs args = new FlyweightConvertingArgs(value, targetType, parameter, language);
+                StrategyConvertingArgs args = new StrategyConvertingArgs(value, targetType, parameter, language);
                 ConvertingBack(this, args);
                 return args.Result;
             }

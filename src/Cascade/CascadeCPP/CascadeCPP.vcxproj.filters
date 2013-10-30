@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resources">
-      <UniqueIdentifier>e7ae66f2-35e5-4246-af0d-42c7b7b56828</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="FlyoutService">
       <UniqueIdentifier>{cb22ad5b-2901-4727-ad2f-a5fb315bd909}</UniqueIdentifier>
     </Filter>
     <Filter Include="Converters">
       <UniqueIdentifier>{62eb9c48-4ad8-4f67-882b-9151a0e5cdfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Selectors">
+      <UniqueIdentifier>{14099e11-013a-4bf3-a4d4-851be7291e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommandService">
+      <UniqueIdentifier>{2a65bb13-39a1-433c-beea-eecf01b3fca5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +34,36 @@
     <ClCompile Include="CascadeConverter.cpp">
       <Filter>Converters</Filter>
     </ClCompile>
+    <ClCompile Include="StrategyStyleSelector.cpp">
+      <Filter>Selectors</Filter>
+    </ClCompile>
+    <ClCompile Include="StrategyTemplateSelector.cpp">
+      <Filter>Selectors</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanNegationConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanToObjectConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanToBrushConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanToVisibilityConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumEqualsConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="NullToBooleanConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="StrategyConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandService.ItemClickCommand.cpp">
+      <Filter>CommandService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -40,6 +72,36 @@
     </ClInclude>
     <ClInclude Include="CascadeConverter.h">
       <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="StrategyStyleSelector.h">
+      <Filter>Selectors</Filter>
+    </ClInclude>
+    <ClInclude Include="StrategyTemplateSelector.h">
+      <Filter>Selectors</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanToObjectConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanNegationConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanToBrushConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanToVisibilityConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="NullToBooleanConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="StrategyConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumEqualsConverter.h">
+      <Filter>Converters</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandService.h">
+      <Filter>CommandService</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
