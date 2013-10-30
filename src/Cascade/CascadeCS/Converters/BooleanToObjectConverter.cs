@@ -30,58 +30,20 @@ using Windows.UI.Xaml.Data;
 
 namespace Sibbiheim.Cascade
 {
-    public sealed class FlyweightConvertingArgs : EventArgs
+    public class BooleanToObjectConverter : IValueConverter
     {
-        public FlyweightConvertingArgs(object value, Type targetType, object parameter, string language)
-        {
-            Value = value;
-            TargetType = targetType;
-            Parameter = parameter;
-            Language = language;
-        }
+        public object TrueValue { get; set; }
 
-        public object Value { get; set; }
-
-        public Type TargetType { get; set; }
-
-        public object Parameter { get; set; }
-
-        public string Language { get; set; }
-
-        public object Result { get; set; }
-    }
-
-    public sealed class FlyweightConverter : IValueConverter
-    {
-        event EventHandler<Object> Converting;
-        event EventHandler<Object> ConvertingBack;
+        public object FalseValue { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (Converting != null)
-            {
-                FlyweightConvertingArgs args = new FlyweightConvertingArgs(value, targetType, parameter, language);
-                Converting(this, args);
-                return args.Result;
-            }
-            else
-            {
-                throw new InvalidOperationException();
-            }
+            return (bool)value ? TrueValue : FalseValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (ConvertingBack != null)
-            {
-                FlyweightConvertingArgs args = new FlyweightConvertingArgs(value, targetType, parameter, language);
-                ConvertingBack(this, args);
-                return args.Result;
-            }
-            else
-            {
-                throw new InvalidOperationException();
-            }
+            return object.Equals(value, TrueValue);
         }
     }
 }

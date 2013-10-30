@@ -219,10 +219,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CascadeConverter.h" />
     <ClInclude Include="FlyoutService.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CascadeConverter.cpp" />
     <ClCompile Include="FlyoutService.Flyout.cpp" />
     <ClCompile Include="FlyoutService.FlyoutContext.cpp" />
     <ClCompile Include="FlyoutService.Popup.cpp" />

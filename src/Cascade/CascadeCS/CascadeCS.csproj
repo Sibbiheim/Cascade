@@ -110,15 +110,21 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Compile Include="CommandService\CommandService.ItemClickCommand.cs" />
+    <Compile Include="CommandService\CommandService.cs" />
     <Compile Include="Converters\BooleanToBrushConverter.cs" />
+    <Compile Include="Converters\BooleanToObjectConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\CascadeConverter.cs" />
     <Compile Include="Converters\BooleanNegationConverter.cs" />
-    <Compile Include="Converters\FlyweightConverter.cs" />
+    <Compile Include="Converters\EnumEqualsConverter.cs" />
+    <Compile Include="Converters\StrategyConverter.cs" />
     <Compile Include="Converters\NullToBooleanConverter.cs" />
     <Compile Include="FlyoutService\FlyoutService.cs" />
     <Compile Include="FlyoutService\FlyoutService.Flyout.cs" />
     <Compile Include="FlyoutService\FlyoutService.FlyoutContext.cs" />
+    <Compile Include="Selectors\StrategyTemplateSelector.cs" />
+    <Compile Include="Selectors\StrategyStyleSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FlyoutService\FlyoutService.Popup.cs" />

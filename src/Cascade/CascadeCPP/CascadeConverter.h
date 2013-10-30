@@ -1,4 +1,4 @@
-﻿/*
+/*
 * The MIT License (MIT)
 *
 * Copyright (c) 2013 Sibbiheim, LLC.
@@ -21,35 +21,23 @@
 * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
+#pragma once
 
-namespace Sibbiheim.Cascade
+namespace Sibbiheim
 {
-    public sealed class BooleanToVisibilityConverter : BooleanToObjectConverter
-    {
-        public BooleanToVisibilityConverter()
-        {
-            TrueVisibility = Visibility.Visible;
-            FalseVisibility = Visibility.Collapsed;
-        }
+	namespace Cascade
+	{
+		[Windows::Foundation::Metadata::WebHostHidden]
+		public ref class CascadeConverter sealed : Windows::UI::Xaml::Data::IValueConverter
+		{
+		public:
 
-        public Visibility TrueVisibility
-        {
-            get { return (Visibility)TrueValue; }
-            set { TrueValue = value; }
-        }
+			CascadeConverter();
 
-        public Visibility FalseVisibility
-        {
-            get { return (Visibility)FalseValue; }
-            set { FalseValue = value; }
-        }
-    }
+			property Windows::Foundation::Collections::IVector<Windows::UI::Xaml::Data::IValueConverter^>^ Converters;
+
+			virtual Platform::Object^ Convert(Platform::Object^ value, Windows::UI::Xaml::Interop::TypeName targetType, Platform::Object^ parameter, Platform::String^ language);
+			virtual Platform::Object^ ConvertBack(Platform::Object^ value, Windows::UI::Xaml::Interop::TypeName targetType, Platform::Object^ parameter, Platform::String^ language);
+		};
+	}
 }

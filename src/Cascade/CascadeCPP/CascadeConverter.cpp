@@ -1,4 +1,4 @@
-﻿/*
+/*
 * The MIT License (MIT)
 *
 * Copyright (c) 2013 Sibbiheim, LLC.
@@ -21,35 +21,41 @@
 * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
+#include "pch.h"
+#include "CascadeConverter.h"
+#include <collection.h>
 
-namespace Sibbiheim.Cascade
+using namespace Sibbiheim::Cascade;
+using namespace Platform;
+using namespace Platform::Collections;
+using namespace Windows::UI::Xaml::Data;
+using namespace Windows::UI::Xaml::Interop;
+
+CascadeConverter::CascadeConverter()
 {
-    public sealed class BooleanToVisibilityConverter : BooleanToObjectConverter
-    {
-        public BooleanToVisibilityConverter()
-        {
-            TrueVisibility = Visibility.Visible;
-            FalseVisibility = Visibility.Collapsed;
-        }
+	Converters = ref new Vector<IValueConverter^>();
+}
 
-        public Visibility TrueVisibility
-        {
-            get { return (Visibility)TrueValue; }
-            set { TrueValue = value; }
-        }
+Object^ CascadeConverter::Convert(Object^ value, TypeName targetType, Object^ parameter, String^ language)
+{
+	Object^ currentValue = value;
 
-        public Visibility FalseVisibility
-        {
-            get { return (Visibility)FalseValue; }
-            set { FalseValue = value; }
-        }
-    }
+	for each (IValueConverter^ converter in Converters)
+	{
+		currentValue = converter->Convert(currentValue, targetType, parameter, language);
+	}
+
+	return currentValue;
+}
+
+Object^ CascadeConverter::ConvertBack(Object^ value, TypeName targetType, Object^ parameter, String^ language)
+{
+	Object^ currentValue = value;
+
+	for (int i = Converters->Size - 1; i >= 0; i--)
+	{
+		currentValue = Converters->GetAt(i)->ConvertBack(currentValue, targetType, parameter, language);
+	}
+
+	return currentValue;
 }

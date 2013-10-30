@@ -27,29 +27,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Controls;
 
 namespace Sibbiheim.Cascade
 {
-    public sealed class BooleanToVisibilityConverter : BooleanToObjectConverter
+    public sealed class StrategyStyleSelectingArgs : EventArgs
     {
-        public BooleanToVisibilityConverter()
+        public StrategyStyleSelectingArgs(object item, DependencyObject container)
         {
-            TrueVisibility = Visibility.Visible;
-            FalseVisibility = Visibility.Collapsed;
+            Item = item;
+            Container = container;
         }
 
-        public Visibility TrueVisibility
+        public object Item { get; private set; }
+
+        public DependencyObject Container { get; private set; }
+
+        public int StyleIndexResult { get; set; }
+    }
+
+    public sealed class StrategyStyleSelector : StyleSelector
+    {
+        public StrategyStyleSelector()
         {
-            get { return (Visibility)TrueValue; }
-            set { TrueValue = value; }
+            Styles = new List<Style>();
         }
 
-        public Visibility FalseVisibility
+        public List<Style> Styles { get; set; }
+
+        public event EventHandler<StrategyStyleSelectingArgs> Selecting;
+
+        protected override Style SelectStyleCore(object item, DependencyObject container)
         {
-            get { return (Visibility)FalseValue; }
-            set { FalseValue = value; }
+            if (Selecting != null)
+            {
+                var args = new StrategyStyleSelectingArgs(item, container);
+                Selecting(this, args);
+                if (args.StyleIndexResult >= 0 && args.StyleIndexResult < Styles.Count)
+                {
+                    return Styles[args.StyleIndexResult];
+                }
+            }
+
+            return null;
         }
     }
 }

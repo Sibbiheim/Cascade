@@ -8,6 +8,9 @@
     <Filter Include="FlyoutService">
       <UniqueIdentifier>{cb22ad5b-2901-4727-ad2f-a5fb315bd909}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Converters">
+      <UniqueIdentifier>{62eb9c48-4ad8-4f67-882b-9151a0e5cdfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -26,11 +29,17 @@
     <ClCompile Include="FlyoutService.SupportNestedFlyouts.cpp">
       <Filter>FlyoutService</Filter>
     </ClCompile>
+    <ClCompile Include="CascadeConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="FlyoutService.h">
       <Filter>FlyoutService</Filter>
+    </ClInclude>
+    <ClInclude Include="CascadeConverter.h">
+      <Filter>Converters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

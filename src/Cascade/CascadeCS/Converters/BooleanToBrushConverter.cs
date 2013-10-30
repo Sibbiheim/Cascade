@@ -32,7 +32,7 @@ using Windows.UI.Xaml.Media;
 
 namespace Sibbiheim.Cascade
 {
-    public sealed class BooleanToBrushConverter : IValueConverter
+    public sealed class BooleanToBrushConverter : BooleanToObjectConverter
     {
         public BooleanToBrushConverter()
         {
@@ -40,18 +40,16 @@ namespace Sibbiheim.Cascade
             FalseBrush = new SolidColorBrush(Colors.White);
         }
 
-        public Brush TrueBrush { get; set; }
-
-        public Brush FalseBrush { get; set; }
-
-        public object Convert(object value, Type targetType, object parameter, string language)
+        public Brush TrueBrush
         {
-            return (bool)value ? TrueBrush : FalseBrush;
+            get { return (Brush)TrueValue; }
+            set { TrueValue = value; }
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        public Brush FalseBrush
         {
-            return (Brush)value == TrueBrush;
+            get { return (Brush)TrueValue; }
+            set { TrueValue = value; }
         }
     }
 }

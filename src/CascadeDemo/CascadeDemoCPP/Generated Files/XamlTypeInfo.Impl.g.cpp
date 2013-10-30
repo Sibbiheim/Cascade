@@ -16,10 +16,17 @@
         ::Windows::UI::Xaml::Markup::IXamlType^ ::XamlTypeInfo::InfoProvider::XamlTypeInfoProvider::GetXamlTypeByType(::Windows::UI::Xaml::Interop::TypeName type)
         {
             auto xamlType = GetXamlTypeByName(type.Name);
-
-            if (xamlType == nullptr)
+            ::XamlTypeInfo::InfoProvider::XamlUserType^ userXamlType = dynamic_cast<::XamlTypeInfo::InfoProvider::XamlUserType^>(xamlType);
+            if (xamlType == nullptr || (userXamlType != nullptr && userXamlType->IsReturnTypeStub))
             {
-                xamlType = CheckOtherMetadataProvidersForType(type);
+                ::Windows::UI::Xaml::Markup::IXamlType^ libXamlType  = CheckOtherMetadataProvidersForType(type);
+                if (libXamlType != nullptr)
+                {
+                    if(libXamlType->IsConstructible || xamlType == nullptr)
+                    {
+                        xamlType = libXamlType;
+                    }
+                }
             }
             return xamlType;
         }
@@ -43,16 +50,24 @@
             }
 
             xamlType = CreateXamlType(typeName);
-
-            if (xamlType == nullptr)
+            ::XamlTypeInfo::InfoProvider::XamlUserType^ userXamlType = dynamic_cast<::XamlTypeInfo::InfoProvider::XamlUserType^>(xamlType);
+            if (xamlType == nullptr || (userXamlType != nullptr && userXamlType->IsReturnTypeStub))
             {
-                xamlType = CheckOtherMetadataProvidersForName(typeName);
+                ::Windows::UI::Xaml::Markup::IXamlType^ libXamlType  = CheckOtherMetadataProvidersForName(typeName);
+                if (libXamlType != nullptr)
+                {
+                    if(libXamlType->IsConstructible || xamlType == nullptr)
+                    {
+                        xamlType = libXamlType;
+                    }
+                }
             }
+
 
             if (xamlType != nullptr)
             {
                 Platform::WeakReference wr(xamlType);
-                _xamlTypes[typeName] =  wr;
+                _xamlTypes[xamlType->FullName] =  wr;
             }
             return xamlType;
         }
@@ -206,6 +221,7 @@
             _isMarkupExtension(false),
             _isEnum(false),
             _isBindable(false),
+            _isReturnTypeStub(false),
             _fullName(fullName),
             _provider(provider),
             _baseType(baseType)
@@ -282,6 +298,11 @@
             return _isBindable;
         }
 
+        bool ::XamlTypeInfo::InfoProvider::XamlUserType::IsReturnTypeStub::get()
+        {
+            return _isReturnTypeStub;
+        }
+
         ::Windows::UI::Xaml::Markup::IXamlMember^ ::XamlTypeInfo::InfoProvider::XamlUserType::ContentProperty::get()
         {
             return _provider->GetMemberByLongName(_contentPropertyName);
@@ -355,6 +376,11 @@
         void ::XamlTypeInfo::InfoProvider::XamlUserType::SetIsBindable()
         {
             _isBindable = true;
+        }
+
+        void ::XamlTypeInfo::InfoProvider::XamlUserType::SetIsReturnTypeStub()
+        {
+            _isReturnTypeStub = true;
         }
 
         void ::XamlTypeInfo::InfoProvider::XamlUserType::SetItemTypeName(::Platform::String^ itemTypeName)
