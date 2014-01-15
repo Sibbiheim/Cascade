@@ -239,6 +239,7 @@
     <ClCompile Include="BooleanToObjectConverter.cpp" />
     <ClCompile Include="BooleanToVisibilityConverter.cpp" />
     <ClCompile Include="CascadeConverter.cpp" />
+    <ClCompile Include="CommandService.HyperlinkClickCommand.cpp" />
     <ClCompile Include="CommandService.ItemClickCommand.cpp" />
     <ClCompile Include="EnumEqualsConverter.cpp" />
     <ClCompile Include="FlyoutService.Flyout.cpp" />

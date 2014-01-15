@@ -56,6 +56,33 @@ namespace Sibbiheim
 			static void OnItemClicked(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
 
 #pragma endregion
+
+#pragma region HyperlinkClickCommand
+
+		private:
+
+			static Windows::UI::Xaml::DependencyProperty^ _hyperlinkClickCommandProperty;
+			static Windows::UI::Xaml::DependencyProperty^ _hyperlinkClickTokenProperty;
+
+		public:
+
+			static property Windows::UI::Xaml::DependencyProperty^ HyperlinkClickCommandProperty
+			{
+				Windows::UI::Xaml::DependencyProperty^ get();
+			}
+
+			static Windows::UI::Xaml::Input::ICommand^ GetHyperlinkClickCommand(Windows::UI::Xaml::Documents::Hyperlink^ element);
+			static void SetHyperlinkClickCommand(Windows::UI::Xaml::Documents::Hyperlink^ element, Windows::UI::Xaml::Input::ICommand^ value);
+
+		private:
+
+			static Windows::Foundation::EventRegistrationToken GetHyperlinkClickToken(Windows::UI::Xaml::Documents::Hyperlink^ element);
+			static void SetHyperlinkClickToken(Windows::UI::Xaml::Documents::Hyperlink^ element, Windows::Foundation::EventRegistrationToken value);
+
+			static void OnHyperlinkClickCommandChanged(Windows::UI::Xaml::DependencyObject^ d, Windows::UI::Xaml::DependencyPropertyChangedEventArgs^ e);
+			static void OnHyperlinkClicked(Windows::UI::Xaml::Documents::Hyperlink^ sender, Windows::UI::Xaml::Documents::HyperlinkClickEventArgs^ e);
+
+#pragma endregion
 		};
 	}
 }

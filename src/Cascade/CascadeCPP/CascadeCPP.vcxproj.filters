@@ -64,6 +64,9 @@
     <ClCompile Include="CommandService.ItemClickCommand.cpp">
       <Filter>CommandService</Filter>
     </ClCompile>
+    <ClCompile Include="CommandService.HyperlinkClickCommand.cpp">
+      <Filter>CommandService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
