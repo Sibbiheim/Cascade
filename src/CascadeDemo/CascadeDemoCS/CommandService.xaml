@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="CascadeDemoCS.CommandService"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CascadeDemoCS"
+    xmlns:cascade="using:Sibbiheim.Cascade"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.DataContext>
+        <local:CommandServiceViewModel />
+    </Page.DataContext>
+
+    <ScrollViewer HorizontalScrollMode="Disabled">
+        <Border Style="{StaticResource ScenarioContainerStyle}">
+            <StackPanel>
+                <StackPanel Margin="0,30,0,29">
+                    <TextBlock Text="CommandService" Style="{StaticResource HeaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,10,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="Sibbiheim.Cascade.CommandService provides a means of handling certain Events with an ICommand instead of a code-behind event handler," />
+                        <Run Text="much like the Button.Command provided by the Framework does for Button.Click." />
+                    </TextBlock>
+                </StackPanel>
+                
+                <!-- Scenario 1 -->
+                <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+                    <TextBlock Text="Execute commands from ListViewBase.ItemClick" Margin="0,0,0,10" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="CommandService.ItemClickCommand can be attached to GridViews and ListViews to handle the ItemClick event with an ICommand, e.g. from your DataContext." />
+                        <Run Text="The item clicked is provided as the CommandParameter." />
+                    </TextBlock>
+
+                    <StackPanel Orientation="Horizontal">
+                        <GridView MaxHeight="280" SelectionMode="None" IsItemClickEnabled="True" cascade:CommandService.ItemClickCommand="{Binding ItemClickCommand}">
+                            <GridView.ItemContainerTransitions>
+                                <TransitionCollection />
+                            </GridView.ItemContainerTransitions>
+                            
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="120" Height="120" Background="White" BorderBrush="{ThemeResource ListBoxItemSelectedBackgroundThemeBrush}" BorderThickness="2">
+                                        <TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}" />
+                                    </Border>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+
+                            <x:String>Item 1</x:String>
+                            <x:String>Item 2</x:String>
+                            <x:String>Item 3</x:String>
+                            <x:String>Item 4</x:String>
+                            <x:String>Item 5</x:String>
+                            <x:String>Item 6</x:String>
+                            <x:String>Item 7</x:String>
+                            <x:String>Item 8</x:String>
+                        </GridView>
+                        
+                        <TextBlock VerticalAlignment="Center" Margin="20,0,0,0" Style="{StaticResource TitleTextBlockStyle}">
+                            <Run Text="{Binding ClickText}" />
+                            <Run Text="was clicked" />
+                        </TextBlock>
+                    </StackPanel>
+
+                    <TextBlock Text="Syntax:" Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}" />
+                    <Border Style="{StaticResource CodeSnippetBorderStyle}">
+                        <RichTextBlock Style="{StaticResource CodeSnippetTextStyle}">
+                            <Paragraph>
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;" />
+                                    <Italic>
+                                        <Run Text="Any ListViewBase" />
+                                    </Italic>
+                                    <Run Text="IsItemClickEnabled=&quot;True&quot;" />
+                                </Span>
+                                <Run Text="cascade:CommandService.ItemClickCommand=&quot;{Binding yourCommand}&quot;" />
+                                <Span Foreground="Gray">
+                                    <Run Text="&gt;" />
+                                </Span>
+                            </Paragraph>
+                        </RichTextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>

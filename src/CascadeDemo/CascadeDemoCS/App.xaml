@@ -5,4 +5,44 @@
     xmlns:local="using:CascadeDemoCS"
     RequestedTheme="Light">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <Thickness x:Key="ListBoxBorderThemeThickness">0</Thickness>
+                    <SolidColorBrush x:Key="ListBoxBorderThemeBrush" Color="Transparent" />
+                    <SolidColorBrush x:Key="ListBoxFocusBackgroundThemeBrush" Color="Transparent" />
+                    <SolidColorBrush x:Key="ListBoxItemSelectedBackgroundThemeBrush" Color="#BB000000" />
+                    <SolidColorBrush x:Key="ListBoxItemSelectedPointerOverBackgroundThemeBrush" Color="#21000000" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            
+            <Style x:Key="ScenarioContainerStyle" TargetType="Border">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="MaxWidth" Value="900" />
+                <Setter Property="Padding" Value="30,30,100,30" />
+                <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+                <Setter Property="ChildTransitions">
+                    <Setter.Value>
+                        <TransitionCollection>
+                            <EntranceThemeTransition IsStaggeringEnabled="False" />
+                        </TransitionCollection>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CodeSnippetBorderStyle" TargetType="Border">
+                <Setter Property="BorderBrush" Value="LightGray" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+            </Style>
+
+            <Style x:Key="CodeSnippetTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource BodyRichTextBlockStyle}">
+                <Setter Property="Padding" Value="12,6,12,12" />
+                <Setter Property="LineHeight" Value="0" />
+                <Setter Property="Foreground" Value="Maroon" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

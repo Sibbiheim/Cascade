@@ -13,13 +13,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Settings Flyout item template is documented at http://go.microsoft.com/fwlink/?LinkId=273769
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace CascadeDemoCS
 {
-    public sealed partial class SettingsFlyoutExample : SettingsFlyout
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class StrategyTools : Page
     {
-        public SettingsFlyoutExample()
+        public StrategyTools()
         {
             this.InitializeComponent();
         }

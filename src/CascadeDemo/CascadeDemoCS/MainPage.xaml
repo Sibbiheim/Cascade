@@ -9,77 +9,48 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <cascade:CascadeConverter x:Key="falseToVisibleConverter">
-            <cascade:CascadeConverter.Converters>
-                <cascade:NegationConverter />
-                <cascade:BooleanToVisibilityConverter />
-            </cascade:CascadeConverter.Converters>
-        </cascade:CascadeConverter>
+        <CollectionViewSource x:Name="scenarioGroups" Source="{Binding ScenarioGroups}" IsSourceGrouped="True" ItemsPath="Scenarios" />
         
-        <cascade:CascadeConverter x:Key="trueToVisibleConverter">
-            <cascade:CascadeConverter.Converters>
-                <cascade:BooleanToVisibilityConverter />
-            </cascade:CascadeConverter.Converters>
-        </cascade:CascadeConverter>
-        
-        <MenuFlyout x:Key="flyout">
-            <MenuFlyoutItem Text="Note the data context coloring" Foreground="{Binding}" />
-            <MenuFlyoutItem Text="Open a custom secondary flyout">
-                <cascade:FlyoutService.Flyout>
-                    <Flyout>
-                        <TextBlock Text="This is a secondary flyout" Foreground="{Binding}" />
-                    </Flyout>
-                </cascade:FlyoutService.Flyout>
-            </MenuFlyoutItem>
-            <MenuFlyoutItem Text="Open a secondary menu flyout">
-                <cascade:FlyoutService.Flyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Text="Open a tertiary flyout">
-                            <cascade:FlyoutService.Flyout>
-                                <Flyout>
-                                    <TextBlock Text="This is a tertiary flyout" Foreground="{Binding}" />
-                                </Flyout>
-                            </cascade:FlyoutService.Flyout>
-                        </MenuFlyoutItem>
-                        <MenuFlyoutSeparator />
-                        <ToggleMenuFlyoutItem Text="Arbitrary toggle menu flyout item" Foreground="{Binding}">
-                            <cascade:FlyoutService.Flyout>
-                                <Flyout>
-                                    <TextBlock Text="Yes, toggle items can have flyouts, too. " />
-                                </Flyout>
-                            </cascade:FlyoutService.Flyout>
-                        </ToggleMenuFlyoutItem>
-                        <MenuFlyoutItem Text="Open a flyout with full placement">
-                            <cascade:FlyoutService.Flyout>
-                                <local:FlyoutExample />
-                            </cascade:FlyoutService.Flyout>
-                        </MenuFlyoutItem>
-                    </MenuFlyout>
-                </cascade:FlyoutService.Flyout>
-            </MenuFlyoutItem>
-        </MenuFlyout>
-        
-        <SolidColorBrush x:Key="textBlockDataContext" Color="Orange" />
-        <SolidColorBrush x:Key="buttonDataContext" Color="Blue" />
+        <Style TargetType="ListBox">
+            <Setter Property="SelectedIndex" Value="0" />
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border Padding="30,5,15,15">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" />
+                                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" DataContext="{StaticResource textBlockDataContext}">
-        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Code-free popups on any FrameworkElement" VerticalAlignment="Center"
-                       cascade:FlyoutService.Flyout="{StaticResource flyout}" />
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-            <AppBarButton VerticalAlignment="Center" Label="Open a menu flyout"
-                      cascade:FlyoutService.SupportNestedFlyouts="True" Flyout="{StaticResource flyout}" DataContext="{StaticResource buttonDataContext}" />
-            
-            <AppBarButton VerticalAlignment="Center" Label="Open a settings flyout">
-                <cascade:FlyoutService.SettingsFlyout>
-                    <local:SettingsFlyoutExample />
-                </cascade:FlyoutService.SettingsFlyout>
-            </AppBarButton>
-            
-            <ToggleButton x:Name="cascadeToggle" Content="Cascade Converter" />
-            <Button Content="Checked" Visibility="{Binding ElementName=cascadeToggle, Path=IsChecked, Converter={StaticResource trueToVisibleConverter}}" />
-            <Button Content="Unchecked" Visibility="{Binding ElementName=cascadeToggle, Path=IsChecked, Converter={StaticResource falseToVisibleConverter}}" />
-        </StackPanel>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="40,60,0,10">
+                <TextBlock Text="Cascade" Margin="0,0,15,0" Style="{StaticResource HeaderTextBlockStyle}" />
+                <TextBlock Text="A code-behind cleaning library by Sibbiheim, LLC." Margin="0,10,0,0" Style="{StaticResource BodyTextBlockStyle}" />
+            </StackPanel>
+
+            <ListBox x:Name="topicList" Grid.Row="1" ItemsSource="{Binding Source={StaticResource scenarioGroups}}" SelectionChanged="OnScenarioSelectionChanged">
+            </ListBox>
+        </Grid>
+       
+        <Rectangle Grid.Column="1" Fill="#BB000000" />
+        <Frame x:Name="topicFrame" Grid.Column="2" MinWidth="619" />
     </Grid>
 </Page>

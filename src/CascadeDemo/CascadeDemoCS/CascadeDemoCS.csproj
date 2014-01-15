@@ -112,15 +112,28 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FlyoutExample.xaml.cs">
-      <DependentUpon>FlyoutExample.xaml</DependentUpon>
+    <Compile Include="CascadeConverter.xaml.cs">
+      <DependentUpon>CascadeConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommandService.xaml.cs">
+      <DependentUpon>CommandService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommandServiceViewModel.cs" />
+    <Compile Include="Feedback.xaml.cs">
+      <DependentUpon>Feedback.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlyoutService.xaml.cs">
+      <DependentUpon>FlyoutService.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectUsage.xaml.cs">
+      <DependentUpon>ProjectUsage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsFlyoutExample.xaml.cs">
-      <DependentUpon>SettingsFlyoutExample.xaml</DependentUpon>
+    <Compile Include="StrategyTools.xaml.cs">
+      <DependentUpon>StrategyTools.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +153,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="FlyoutExample.xaml">
+    <Page Include="CascadeConverter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommandService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Feedback.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlyoutService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,11 +173,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingsFlyoutExample.xaml">
+    <Page Include="ProjectUsage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StrategyTools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

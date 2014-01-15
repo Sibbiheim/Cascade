@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="CascadeDemoCS.CascadeConverter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CascadeDemoCS"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Border Style="{StaticResource ScenarioContainerStyle}">
+            <StackPanel>
+                <StackPanel Margin="0,30,0,29">
+                    <TextBlock Text="CascadeConverter" Style="{StaticResource HeaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,10,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="Sibbiheim.Cascade.CascadeConverter is a tool that helps less with code-behind clutter but project files clutter" />
+                        <Run Text="by allowing you to combine simple, reusable IValueConverter implementations into complex, specialized chains," />
+                        <Run Text="rather than implement specific converters that are only used once or a few times." />
+                    </TextBlock>
+                </StackPanel>
+
+                <!-- Scenario 1 -->
+                <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+                    <TextBlock Text="Chain simple converters together" Margin="0,0,0,10" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,323 @@
+﻿<Page
+    x:Class="CascadeDemoCS.FlyoutService"
+    x:Name="page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CascadeDemoCS.FlyoutScenarios"
+    xmlns:cascade="using:Sibbiheim.Cascade"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <MenuFlyout x:Name="scenario1Flyout">
+            <MenuFlyoutItem Text="Item 1" />
+            <MenuFlyoutItem Text="Item 2" />
+        </MenuFlyout>
+
+        <MenuFlyout x:Name="scenario2LeftFlyout" Placement="Left">
+            <MenuFlyoutItem Text="Close" />
+        </MenuFlyout>
+
+        <MenuFlyout x:Name="scenario2BottomFlyout" Placement="Bottom">
+            <MenuFlyoutItem Text="Show Left" cascade:FlyoutService.Flyout="{StaticResource scenario2LeftFlyout}" />
+        </MenuFlyout>
+
+        <MenuFlyout x:Name="scenario2RightFlyout" Placement="Right">
+            <MenuFlyoutItem Text="Show Bottom" cascade:FlyoutService.Flyout="{StaticResource scenario2BottomFlyout}" />
+        </MenuFlyout>
+
+        <MenuFlyout x:Name="scenario2TopFlyout" Placement="Top">
+            <MenuFlyoutItem Text="Show Right" cascade:FlyoutService.Flyout="{StaticResource scenario2RightFlyout}" />
+        </MenuFlyout>
+    </Page.Resources>
+
+    <ScrollViewer HorizontalScrollMode="Disabled">
+        <Border Style="{StaticResource ScenarioContainerStyle}">
+            <StackPanel>
+                <StackPanel Margin="0,30,0,29">
+                    <TextBlock Text="FlyoutService" Style="{StaticResource HeaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,10,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="Sibbiheim.Cascade.FlyoutService provides a means of creating functional Flyout menus and subMenus without requiring any code-behind handlers." />
+                    </TextBlock>
+                </StackPanel>
+
+                <!-- Scenario 1 -->
+                <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+                    <TextBlock  Text="Open Flyouts, Popups, and SettingsFlyouts automatically" Margin="0,0,0,10" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="Sibbiheim.Cascade.FlyoutService provides a Flyout attached property that can be used with any FrameworkElement." />
+                        <Run Text="Unlike with the FlyoutBase.AttachedFlyout attached property provided by the framework, Flyouts added using Cascade will automatically show themselves when their owners are Tapped." />
+                        <Run Text="No additional C# or C++ code is necessary." />
+                    </TextBlock>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Buttons" cascade:FlyoutService.Flyout="{StaticResource scenario1Flyout}" Margin="0,20,20,20" />
+                        <TextBlock Text="TextBlocks" cascade:FlyoutService.Flyout="{StaticResource scenario1Flyout}" Margin="20" VerticalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}" />
+                        <SymbolIcon Symbol="More" cascade:FlyoutService.Flyout="{StaticResource scenario1Flyout}" Margin="20" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <TextBlock Text="Usage:" Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}" />
+                    <Border Style="{StaticResource CodeSnippetBorderStyle}">
+                        <RichTextBlock Style="{StaticResource CodeSnippetTextStyle}">
+                            <Paragraph>
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;" />
+                                    <Italic>
+                                        <Run Text="AnyFrameworkElement" />
+                                    </Italic>
+                                    <Run Text="&gt;" />
+                                </Span>
+                                <LineBreak />
+                                <Run Text="    &lt;cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="        &lt;MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;MenuFlyoutItem Text=&quot;Item 1&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;MenuFlyoutItem Text=&quot;Item 2&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="        &lt;/MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="    &lt;/cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;/" />
+                                    <Italic>
+                                        <Run Text="AnyFrameworkElement" />
+                                    </Italic>
+                                    <Run Text="&gt;" />
+                                </Span>
+                            </Paragraph>
+                        </RichTextBlock>
+                    </Border>
+
+                    <TextBlock Text="or:" Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}" />
+                    <Border Style="{StaticResource CodeSnippetBorderStyle}">
+                        <RichTextBlock Style="{StaticResource CodeSnippetTextStyle}">
+                            <Paragraph>
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;" />
+                                    <Italic>
+                                        <Run Text="AnyFrameworkElement" />
+                                    </Italic>
+                                    <Run Text=" " />
+                                </Span>
+                                <Run Text="cascade:FlyoutService.Flyout=&quot;{StaticResource yourFlyout}&quot;" />
+                                <Span Foreground="Gray">
+                                    <Run Text=" /&gt;" />
+                                </Span>
+                            </Paragraph>
+                        </RichTextBlock>
+                    </Border>
+
+                    <TextBlock Text="Popups and SettingsFlyouts can similarly be opened automatically from any FrameworkElement by using the FlyoutService.Popup or FlyoutService.SettingsFlyout, respectively." Margin="0,20,0,10" Style="{StaticResource BodyTextBlockStyle}" />
+                </StackPanel>
+
+                <!-- Scenario 2 -->
+                <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+                    <TextBlock Text="Open nested Flyouts from MenuFlyouts" Margin="0,0,0,10" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="The primary feature of Sibbiheim.Cascade.FlyoutService is to provide a XAML-only means of creating and using nested Flyouts. " />
+                        <Run Text="Flyouts that are attached to a MenuFlyoutItem with FlyoutService.Flyout will automatically open when that MenuFlyoutItem is Tapped, and that Flyout will inherit the previous Flyout's DataContext and positioning reference." />
+                    </TextBlock>
+
+                    <StackPanel Orientation="Horizontal">
+                        <AppBarButton Icon="Edit" Label="Edit" HorizontalAlignment="Left">
+                            <cascade:FlyoutService.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Rename">
+                                        <cascade:FlyoutService.Flyout>
+                                            <Flyout>
+                                                <StackPanel Width="300">
+                                                    <TextBox />
+                                                    <Button HorizontalAlignment="Right" Content="Rename" />
+                                                </StackPanel>
+                                            </Flyout>
+                                        </cascade:FlyoutService.Flyout>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Text="Sort">
+                                        <cascade:FlyoutService.Flyout>
+                                            <MenuFlyout>
+                                                <ToggleMenuFlyoutItem Text="By Name" IsChecked="True" />
+                                                <ToggleMenuFlyoutItem Text="By Last Updated" />
+                                                <ToggleMenuFlyoutItem Text="By File Size" />
+                                            </MenuFlyout>
+                                        </cascade:FlyoutService.Flyout>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </cascade:FlyoutService.Flyout>
+                        </AppBarButton>
+
+                        <AppBarButton Icon="Rotate" Label="Placement" cascade:FlyoutService.Flyout="{StaticResource scenario2TopFlyout}" />
+                    </StackPanel>
+
+                    <TextBlock Text="Usage:" Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}" />
+                    <Border Style="{StaticResource CodeSnippetBorderStyle}">
+                        <RichTextBlock Style="{StaticResource CodeSnippetTextStyle}">
+                            <Paragraph>
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;" />
+                                    <Italic>
+                                        <Run Text="AnyFrameworkElement" />
+                                    </Italic>
+                                    <Run Text="&gt;" />
+                                </Span>
+                                <LineBreak />
+                                <Run Text="    &lt;cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="        &lt;MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;MenuFlyoutItem Text=&quot;Rename&quot;&gt;" />
+                                <LineBreak />
+                                <Run Text="                &lt;cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                    &lt;Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                        &lt;StackPanel Width=&quot;300&quot;&gt;" />
+                                <LineBreak />
+                                <Run Text="                            &lt;TextBox /&gt;" />
+                                <LineBreak />
+                                <Run Text="                            &lt;Button HorizontalAlignment=&quot;Right&quot; Content=&quot;Rename&quot; />" />
+                                <LineBreak />
+                                <Run Text="                        &lt;/StackPanel&gt;" />
+                                <LineBreak />
+                                <Run Text="                    &lt;/Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                &lt;/cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;/MenuFlyoutItem&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;MenuFlyoutItem Text=&quot;Sort&quot;&gt;" />
+                                <LineBreak />
+                                <Run Text="                &lt;cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                    &lt;MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                        &lt;ToggleMenuFlyoutItem Text=&quot;By Name&quot; IsChecked=&quot;True&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="                        &lt;ToggleMenuFlyoutItem Text=&quot;By Last Updated&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="                        &lt;ToggleMenuFlyoutItem Text=&quot;By File Size&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="                    &lt;/MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                &lt;/cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;/MenuFlyoutItem&gt;" />
+                                <LineBreak />
+                                <Run Text="        &lt;/MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="    &lt;/cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;/" />
+                                    <Italic>
+                                        <Run Text="AnyFrameworkElement" />
+                                    </Italic>
+                                    <Run Text="&gt;" />
+                                </Span>
+                            </Paragraph>
+                        </RichTextBlock>
+                    </Border>
+                </StackPanel>
+
+                <!-- Scenario 3 -->
+                <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+                    <TextBlock Text="Using FlyoutService with Button.Flyout and AppBarButton.Flyout" Margin="0,0,0,10" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+                    <TextBlock Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}">
+                        <Run Text="Sibbiheim.Cascade.FlyoutService supports using Button.Flyout and AppBarButton.Flyout when constructing nested Flyouts, " />
+                        <Run Text="but an additional attached property FlyoutService.SupportNestedFlyouts must be set on the Button or AppBarButton in order for the FlyoutService to provide the nested flyouts their DataContext and positioning reference properly." />
+                    </TextBlock>
+
+                    <StackPanel Orientation="Horizontal">
+                        <AppBarButton Icon="Remove" Label="Without property">
+                            <AppBarButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="OpenSubMenu">
+                                        <cascade:FlyoutService.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="SubMenu Item 1" />
+                                                <MenuFlyoutItem Text="SubMenu Item 2" />
+                                            </MenuFlyout>
+                                        </cascade:FlyoutService.Flyout>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </AppBarButton.Flyout>
+                        </AppBarButton>
+                        <AppBarButton Icon="Add" Label="With property" cascade:FlyoutService.SupportNestedFlyouts="True">
+                            <AppBarButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="OpenSubMenu">
+                                        <cascade:FlyoutService.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="SubMenu Item 1" />
+                                                <MenuFlyoutItem Text="SubMenu Item 2" />
+                                            </MenuFlyout>
+                                        </cascade:FlyoutService.Flyout>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </AppBarButton.Flyout>
+                        </AppBarButton>
+                    </StackPanel>
+
+                    <TextBlock Text="Usage:" Margin="0,0,0,10" Style="{StaticResource BodyTextBlockStyle}" />
+                    <Border Style="{StaticResource CodeSnippetBorderStyle}">
+                        <RichTextBlock Style="{StaticResource CodeSnippetTextStyle}">
+                            <Paragraph>
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;" />
+                                    <Italic>
+                                        <Run Text="Button or AppBarButton" />
+                                    </Italic>
+                                </Span>
+                                <Bold>
+                                    <Run Text="cascade:FlyoutService.SupportNestedFlyouts=&quot;True&quot;" />
+                                </Bold>
+                                <Span Foreground="Gray">
+                                    <Run Text="&gt;" />
+                                </Span>
+                                <LineBreak />
+                                <Run Text="    &lt;AppBarButton.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="        &lt;MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;MenuFlyoutItem Text=&quot;OpenSubMenu&quot;&gt;" />
+                                <LineBreak />
+                                <Run Text="                &lt;cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                    &lt;MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                        &lt;MenuFlyoutItem Text=&quot;SubMenu Item 1&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="                        &lt;MenuFlyoutItem Text=&quot;SubMenu Item 2&quot; /&gt;" />
+                                <LineBreak />
+                                <Run Text="                    &lt;/MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="                &lt;/cascade:FlyoutService.Flyout&gt;" />
+                                <LineBreak />
+                                <Run Text="            &lt;/MenuFlyoutItem&gt;" />
+                                <LineBreak />
+                                <Run Text="        &lt;/MenuFlyout&gt;" />
+                                <LineBreak />
+                                <Run Text="    &lt;/AppBarButton.Flyout&gt;" />
+                                <LineBreak />
+                                <Span Foreground="Gray">
+                                    <Run Text="&lt;/" />
+                                    <Italic>
+                                        <Run Text="Button or AppBarButton" />
+                                    </Italic>
+                                    <Run Text="&gt;" />
+                                </Span>
+                            </Paragraph>
+                        </RichTextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>
