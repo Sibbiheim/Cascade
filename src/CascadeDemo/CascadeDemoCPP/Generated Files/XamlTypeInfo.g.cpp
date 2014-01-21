@@ -71,7 +71,7 @@
         return ref new XamlSystemBaseType(typeName);
     }
 
-    if (typeName == L"Windows.UI.Xaml.DependencyObject")
+    if (typeName == L"Object")
     {
         return ref new XamlSystemBaseType(typeName);
     }
@@ -97,6 +97,11 @@
     }
 
     if (typeName == L"Windows.UI.Xaml.Controls.SettingsFlyout")
+    {
+        return ref new XamlSystemBaseType(typeName);
+    }
+
+    if (typeName == L"Windows.UI.Xaml.DependencyObject")
     {
         return ref new XamlSystemBaseType(typeName);
     }
@@ -135,13 +140,18 @@
 
     if (typeName == L"Sibbiheim.Cascade.FlyoutService")
     {
-        ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Windows.UI.Xaml.DependencyObject"));
+        ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Object"));
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Metadata;
+        userType->Activator =
+            []() -> Platform::Object^ 
+            {
+                return ref new ::Sibbiheim::Cascade::FlyoutService(); 
+            };
         userType->AddMemberName(L"Flyout");
         userType->AddMemberName(L"SupportNestedFlyouts");
         userType->AddMemberName(L"SettingsFlyout");
-        userType->AddMemberName(L"Popup");
         userType->AddMemberName(L"FlyoutContext");
+        userType->AddMemberName(L"Popup");
         return userType;
     }
 
@@ -178,7 +188,6 @@
     {
         ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"Flyout", L"Windows.UI.Xaml.Controls.Primitives.FlyoutBase");
         xamlMember->SetTargetTypeName(L"Windows.UI.Xaml.FrameworkElement");
-        xamlMember->SetIsDependencyProperty();
         xamlMember->SetIsAttachable();
         xamlMember->Getter =
             [](Object^ instance) -> Object^
@@ -198,7 +207,6 @@
     {
         ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"SupportNestedFlyouts", L"Boolean");
         xamlMember->SetTargetTypeName(L"Windows.UI.Xaml.Controls.Button");
-        xamlMember->SetIsDependencyProperty();
         xamlMember->SetIsAttachable();
         xamlMember->Getter =
             [](Object^ instance) -> Object^
@@ -218,7 +226,6 @@
     {
         ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"SettingsFlyout", L"Windows.UI.Xaml.Controls.SettingsFlyout");
         xamlMember->SetTargetTypeName(L"Windows.UI.Xaml.FrameworkElement");
-        xamlMember->SetIsDependencyProperty();
         xamlMember->SetIsAttachable();
         xamlMember->Getter =
             [](Object^ instance) -> Object^
@@ -230,26 +237,6 @@
             [](Object^ instance, Object^ value) -> void
             {
                 ::Sibbiheim::Cascade::FlyoutService::SetSettingsFlyout((::Windows::UI::Xaml::FrameworkElement^)instance, (::Windows::UI::Xaml::Controls::SettingsFlyout^)value);
-            };
-        return xamlMember;
-    }
-
-    if (longMemberName == L"Sibbiheim.Cascade.FlyoutService.Popup")
-    {
-        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"Popup", L"Windows.UI.Xaml.Controls.Primitives.Popup");
-        xamlMember->SetTargetTypeName(L"Windows.UI.Xaml.FrameworkElement");
-        xamlMember->SetIsDependencyProperty();
-        xamlMember->SetIsAttachable();
-        xamlMember->Getter =
-            [](Object^ instance) -> Object^
-            {
-                return ::Sibbiheim::Cascade::FlyoutService::GetPopup((::Windows::UI::Xaml::FrameworkElement^)instance);
-            };
-
-        xamlMember->Setter =
-            [](Object^ instance, Object^ value) -> void
-            {
-                ::Sibbiheim::Cascade::FlyoutService::SetPopup((::Windows::UI::Xaml::FrameworkElement^)instance, (::Windows::UI::Xaml::Controls::Primitives::Popup^)value);
             };
         return xamlMember;
     }
@@ -269,6 +256,25 @@
             [](Object^ instance, Object^ value) -> void
             {
                 ::Sibbiheim::Cascade::FlyoutService::SetFlyoutContext((::Windows::UI::Xaml::DependencyObject^)instance, (::Windows::UI::Xaml::FrameworkElement^)value);
+            };
+        return xamlMember;
+    }
+
+    if (longMemberName == L"Sibbiheim.Cascade.FlyoutService.Popup")
+    {
+        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"Popup", L"Windows.UI.Xaml.Controls.Primitives.Popup");
+        xamlMember->SetTargetTypeName(L"Windows.UI.Xaml.FrameworkElement");
+        xamlMember->SetIsAttachable();
+        xamlMember->Getter =
+            [](Object^ instance) -> Object^
+            {
+                return ::Sibbiheim::Cascade::FlyoutService::GetPopup((::Windows::UI::Xaml::FrameworkElement^)instance);
+            };
+
+        xamlMember->Setter =
+            [](Object^ instance, Object^ value) -> void
+            {
+                ::Sibbiheim::Cascade::FlyoutService::SetPopup((::Windows::UI::Xaml::FrameworkElement^)instance, (::Windows::UI::Xaml::Controls::Primitives::Popup^)value);
             };
         return xamlMember;
     }

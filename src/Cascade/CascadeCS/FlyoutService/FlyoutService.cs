@@ -30,7 +30,7 @@ using Windows.UI.Xaml;
 
 namespace Sibbiheim.Cascade
 {
-    public partial class FlyoutService : DependencyObject
+    public sealed partial class FlyoutService
     {
     }
 }

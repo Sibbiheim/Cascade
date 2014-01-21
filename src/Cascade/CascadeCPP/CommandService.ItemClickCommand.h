@@ -22,16 +22,35 @@
 */
 
 #pragma once
-#include "CommandService.HyperlinkClickCommand.h"
-#include "CommandService.ItemClickCommand.h"
 
 namespace Sibbiheim
 {
 	namespace Cascade
 	{
-		[Windows::Foundation::Metadata::WebHostHidden]
-		public ref class CommandService sealed
+		partial ref class CommandService
 		{
+		private:
+
+			static Windows::UI::Xaml::DependencyProperty^ _itemClickCommandProperty;
+			static Windows::UI::Xaml::DependencyProperty^ _itemClickTokenProperty;
+
+		public:
+
+			static property Windows::UI::Xaml::DependencyProperty^ ItemClickCommandProperty
+			{
+				Windows::UI::Xaml::DependencyProperty^ get();
+			}
+
+			static Windows::UI::Xaml::Input::ICommand^ GetItemClickCommand(Windows::UI::Xaml::Controls::ListViewBase^ element);
+			static void SetItemClickCommand(Windows::UI::Xaml::Controls::ListViewBase^ element, Windows::UI::Xaml::Input::ICommand^ value);
+
+		private:
+
+			static Windows::Foundation::EventRegistrationToken GetItemClickToken(Windows::UI::Xaml::Controls::ListViewBase^ element);
+			static void SetItemClickToken(Windows::UI::Xaml::Controls::ListViewBase^ element, Windows::Foundation::EventRegistrationToken value);
+
+			static void OnItemClickCommandChanged(Windows::UI::Xaml::DependencyObject^ d, Windows::UI::Xaml::DependencyPropertyChangedEventArgs^ e);
+			static void OnItemClicked(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
 		};
 	}
 }

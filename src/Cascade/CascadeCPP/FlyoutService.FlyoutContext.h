@@ -22,16 +22,21 @@
 */
 
 #pragma once
-#include "CommandService.HyperlinkClickCommand.h"
-#include "CommandService.ItemClickCommand.h"
 
 namespace Sibbiheim
 {
 	namespace Cascade
 	{
-		[Windows::Foundation::Metadata::WebHostHidden]
-		public ref class CommandService sealed
+		partial ref class FlyoutService
 		{
+		private:
+
+			static Windows::UI::Xaml::DependencyProperty^ _flyoutContextProperty;
+
+		public:
+
+			static Windows::UI::Xaml::FrameworkElement^ GetFlyoutContext(Windows::UI::Xaml::DependencyObject^ obj);
+			static void SetFlyoutContext(Windows::UI::Xaml::DependencyObject^ obj, Windows::UI::Xaml::FrameworkElement^ value);
 		};
 	}
 }

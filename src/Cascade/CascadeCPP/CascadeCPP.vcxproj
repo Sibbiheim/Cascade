@@ -225,8 +225,15 @@
     <ClInclude Include="BooleanToVisibilityConverter.h" />
     <ClInclude Include="CascadeConverter.h" />
     <ClInclude Include="CommandService.h" />
+    <ClInclude Include="CommandService.HyperlinkClickCommand.h" />
+    <ClInclude Include="CommandService.ItemClickCommand.h" />
     <ClInclude Include="EnumEqualsConverter.h" />
+    <ClInclude Include="FlyoutService.Flyout.h" />
+    <ClInclude Include="FlyoutService.FlyoutContext.h" />
     <ClInclude Include="FlyoutService.h" />
+    <ClInclude Include="FlyoutService.Popup.h" />
+    <ClInclude Include="FlyoutService.SettingsFlyout.h" />
+    <ClInclude Include="FlyoutService.SupportNestedFlyouts.h" />
     <ClInclude Include="NullToBooleanConverter.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StrategyConverter.h" />
