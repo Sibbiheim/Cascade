@@ -112,5 +112,26 @@
     <ClInclude Include="ResourceStringConverter.h">
       <Filter>Converters</Filter>
     </ClInclude>
+    <ClInclude Include="FlyoutService.Flyout.h">
+      <Filter>FlyoutService</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyoutService.FlyoutContext.h">
+      <Filter>FlyoutService</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyoutService.Popup.h">
+      <Filter>FlyoutService</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyoutService.SettingsFlyout.h">
+      <Filter>FlyoutService</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyoutService.SupportNestedFlyouts.h">
+      <Filter>FlyoutService</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandService.HyperlinkClickCommand.h">
+      <Filter>CommandService</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandService.ItemClickCommand.h">
+      <Filter>CommandService</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
