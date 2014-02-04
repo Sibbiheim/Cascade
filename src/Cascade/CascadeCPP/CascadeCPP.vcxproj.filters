@@ -67,6 +67,9 @@
     <ClCompile Include="CommandService.HyperlinkClickCommand.cpp">
       <Filter>CommandService</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceStringConverter.cpp">
+      <Filter>Converters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -106,26 +109,8 @@
     <ClInclude Include="CommandService.h">
       <Filter>CommandService</Filter>
     </ClInclude>
-    <ClInclude Include="FlyoutService.Flyout.h">
-      <Filter>FlyoutService</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyoutService.FlyoutContext.h">
-      <Filter>FlyoutService</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyoutService.Popup.h">
-      <Filter>FlyoutService</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyoutService.SettingsFlyout.h">
-      <Filter>FlyoutService</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyoutService.SupportNestedFlyouts.h">
-      <Filter>FlyoutService</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandService.HyperlinkClickCommand.h">
-      <Filter>CommandService</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandService.ItemClickCommand.h">
-      <Filter>CommandService</Filter>
+    <ClInclude Include="ResourceStringConverter.h">
+      <Filter>Converters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

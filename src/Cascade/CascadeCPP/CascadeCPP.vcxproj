@@ -225,17 +225,11 @@
     <ClInclude Include="BooleanToVisibilityConverter.h" />
     <ClInclude Include="CascadeConverter.h" />
     <ClInclude Include="CommandService.h" />
-    <ClInclude Include="CommandService.HyperlinkClickCommand.h" />
-    <ClInclude Include="CommandService.ItemClickCommand.h" />
     <ClInclude Include="EnumEqualsConverter.h" />
-    <ClInclude Include="FlyoutService.Flyout.h" />
-    <ClInclude Include="FlyoutService.FlyoutContext.h" />
     <ClInclude Include="FlyoutService.h" />
-    <ClInclude Include="FlyoutService.Popup.h" />
-    <ClInclude Include="FlyoutService.SettingsFlyout.h" />
-    <ClInclude Include="FlyoutService.SupportNestedFlyouts.h" />
     <ClInclude Include="NullToBooleanConverter.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ResourceStringConverter.h" />
     <ClInclude Include="StrategyConverter.h" />
     <ClInclude Include="StrategyStyleSelector.h" />
     <ClInclude Include="StrategyTemplateSelector.h" />
@@ -263,6 +257,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ResourceStringConverter.cpp" />
     <ClCompile Include="StrategyConverter.cpp" />
     <ClCompile Include="StrategyStyleSelector.cpp" />
     <ClCompile Include="StrategyTemplateSelector.cpp" />
