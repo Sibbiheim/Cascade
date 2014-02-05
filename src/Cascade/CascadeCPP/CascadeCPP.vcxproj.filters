@@ -70,6 +70,7 @@
     <ClCompile Include="ResourceStringConverter.cpp">
       <Filter>Converters</Filter>
     </ClCompile>
+    <ClCompile Include="Lightbox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -133,5 +134,9 @@
     <ClInclude Include="CommandService.ItemClickCommand.h">
       <Filter>CommandService</Filter>
     </ClInclude>
+    <ClInclude Include="Lightbox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml" />
   </ItemGroup>
 </Project>

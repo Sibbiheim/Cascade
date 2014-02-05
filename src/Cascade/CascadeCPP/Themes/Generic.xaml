@@ -1,0 +1,52 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cascade="using:Sibbiheim.Cascade">
+
+    <Style x:Key="LightboxFlyoutPresenterStyle" TargetType="FlyoutPresenter">
+        <Setter Property="cascade:Lightbox.Background" Value="#80808080" />
+        <Setter Property="cascade:Lightbox.ContentMargin" Value="15" />
+        <Setter Property="MinWidth" Value="NaN"/>
+        <Setter Property="MaxWidth" Value="NaN"/>
+        <Setter Property="MinHeight" Value="NaN"/>
+        <Setter Property="MaxHeight" Value="NaN"/>
+        <Setter Property="cascade:Lightbox.ContentMinWidth" Value="{ThemeResource FlyoutThemeMinWidth}"/>
+        <Setter Property="cascade:Lightbox.ContentMaxWidth" Value="{ThemeResource FlyoutThemeMaxWidth}"/>
+        <Setter Property="cascade:Lightbox.ContentMinHeight" Value="{ThemeResource FlyoutThemeMinHeight}"/>
+        <Setter Property="cascade:Lightbox.ContentMaxHeight" Value="{ThemeResource FlyoutThemeMaxHeight}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="FlyoutPresenter">
+                    <Border Margin="-5"
+                            Background="{TemplateBinding cascade:Lightbox.Background}"
+                            Padding="{TemplateBinding cascade:Lightbox.ContentMargin}">
+                        
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                MinWidth="{TemplateBinding cascade:Lightbox.ContentMinWidth}"
+                                MaxWidth="{TemplateBinding cascade:Lightbox.ContentMaxWidth}"
+                                MinHeight="{TemplateBinding cascade:Lightbox.ContentMinHeight}"
+                                MaxHeight="{TemplateBinding cascade:Lightbox.ContentMaxHeight}">
+                                <ScrollViewer x:Name="ScrollViewer"
+                                              ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}"
+                                              HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                              HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                              AutomationProperties.AccessibilityView="Raw">
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </ScrollViewer>
+                        </Border>
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

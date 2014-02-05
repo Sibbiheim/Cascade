@@ -234,6 +234,7 @@
     <ClInclude Include="FlyoutService.Popup.h" />
     <ClInclude Include="FlyoutService.SettingsFlyout.h" />
     <ClInclude Include="FlyoutService.SupportNestedFlyouts.h" />
+    <ClInclude Include="Lightbox.h" />
     <ClInclude Include="NullToBooleanConverter.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ResourceStringConverter.h" />
@@ -255,6 +256,7 @@
     <ClCompile Include="FlyoutService.Popup.cpp" />
     <ClCompile Include="FlyoutService.SettingsFlyout.cpp" />
     <ClCompile Include="FlyoutService.SupportNestedFlyouts.cpp" />
+    <ClCompile Include="Lightbox.cpp" />
     <ClCompile Include="NullToBooleanConverter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -268,6 +270,9 @@
     <ClCompile Include="StrategyConverter.cpp" />
     <ClCompile Include="StrategyStyleSelector.cpp" />
     <ClCompile Include="StrategyTemplateSelector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

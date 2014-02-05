@@ -24,6 +24,9 @@
     if(_otherProviders == nullptr)
     {
         _otherProviders = ref new ::Platform::Collections::Vector<::Windows::UI::Xaml::Markup::IXamlMetadataProvider^>();
+        ::Windows::UI::Xaml::Markup::IXamlMetadataProvider^ provider;
+        provider = ref new ::Sibbiheim::Cascade::CascadeCPP_XamlTypeInfo::XamlMetaDataProvider();
+        _otherProviders->Append(provider); 
     }
     return _otherProviders;
 }
@@ -142,11 +145,6 @@
     {
         ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Object"));
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Metadata;
-        userType->Activator =
-            []() -> Platform::Object^ 
-            {
-                return ref new ::Sibbiheim::Cascade::FlyoutService(); 
-            };
         userType->AddMemberName(L"Flyout");
         userType->AddMemberName(L"SupportNestedFlyouts");
         userType->AddMemberName(L"SettingsFlyout");

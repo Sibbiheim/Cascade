@@ -32,6 +32,9 @@ namespace Sibbiheim
 		[Windows::Foundation::Metadata::WebHostHidden]
 		public ref class CommandService sealed
 		{
+		private:
+
+			CommandService();
 		};
 	}
 }

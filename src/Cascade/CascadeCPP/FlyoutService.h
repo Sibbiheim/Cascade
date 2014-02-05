@@ -35,6 +35,9 @@ namespace Sibbiheim
 		[Windows::Foundation::Metadata::WebHostHidden]
 		public ref class FlyoutService sealed
 		{
+		private:
+
+			FlyoutService();
 		};
 	}
 }
