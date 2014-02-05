@@ -4,8 +4,8 @@
     xmlns:cascade="using:Sibbiheim.Cascade">
 
     <Style x:Key="LightboxFlyoutPresenterStyle" TargetType="FlyoutPresenter">
-        <Setter Property="cascade:Lightbox.Background" Value="#80808080" />
-        <Setter Property="cascade:Lightbox.ContentMargin" Value="15" />
+        <Setter Property="cascade:Lightbox.Background" Value="#72000000" />
+        <Setter Property="cascade:Lightbox.ContentMargin" Value="24" /> <!-- Compensates for the negative margin on the outer border -->
         <Setter Property="MinWidth" Value="NaN"/>
         <Setter Property="MaxWidth" Value="NaN"/>
         <Setter Property="MinHeight" Value="NaN"/>
@@ -17,7 +17,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="FlyoutPresenter">
-                    <Border Margin="-5"
+                    <Border Margin="-9"
                             Background="{TemplateBinding cascade:Lightbox.Background}"
                             Padding="{TemplateBinding cascade:Lightbox.ContentMargin}">
                         
