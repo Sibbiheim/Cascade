@@ -27,10 +27,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Sibbiheim.Cascade
 {
     public sealed partial class FlyoutService
     {
+        private FlyoutService()
+        {
+        }
+
+        public static void CloseContainingPopup(FrameworkElement element)
+        {
+            FrameworkElement parent = element.Parent as FrameworkElement;
+            while (parent != null)
+            {
+                Popup popupParent = parent as Popup;
+                if (popupParent != null)
+                {
+                    popupParent.IsOpen = false;
+                }
+                else
+                {
+                    parent = parent.Parent as FrameworkElement;
+                }
+            }
+        }
     }
 }

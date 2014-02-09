@@ -71,6 +71,9 @@
       <Filter>Converters</Filter>
     </ClCompile>
     <ClCompile Include="Lightbox.cpp" />
+    <ClCompile Include="FlyoutService.cpp">
+      <Filter>FlyoutService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

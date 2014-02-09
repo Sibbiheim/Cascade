@@ -21,27 +21,31 @@
 * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
-#include "FlyoutService.Flyout.h"
-#include "FlyoutService.FlyoutContext.h"
-#include "FlyoutService.Popup.h"
-#include "FlyoutService.SettingsFlyout.h"
-#include "FlyoutService.SupportNestedFlyouts.h"
+#include <pch.h>
+#include "FlyoutService.h"
 
-namespace Sibbiheim
+using namespace Sibbiheim::Cascade;
+
+using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Controls::Primitives;
+
+FlyoutService::FlyoutService()
 {
-	namespace Cascade
+}
+
+void FlyoutService::CloseContainingPopup(FrameworkElement^ element)
+{
+	auto parent = dynamic_cast<FrameworkElement^>(element->Parent);
+	while (parent != nullptr)
 	{
-		[Windows::Foundation::Metadata::WebHostHidden]
-		public ref class FlyoutService sealed
+		auto popupParent = dynamic_cast<Popup^>(parent);
+		if (popupParent != nullptr)
 		{
-		private:
-
-			FlyoutService();
-
-		public:
-
-			static void CloseContainingPopup(Windows::UI::Xaml::FrameworkElement^ element);
-		};
+			popupParent->IsOpen = false;
+		}
+		else
+		{
+			parent = dynamic_cast<FrameworkElement^>(parent->Parent);
+		}
 	}
 }

@@ -32,7 +32,15 @@ using namespace Windows::UI::Xaml::Interop;
 
 Object^ EnumEqualsConverter::Convert(Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
-	throw ref new NotImplementedException();
+	auto boxValue = dynamic_cast<IBox<int>^>(value);
+	if (boxValue != nullptr)
+	{
+		return Value == boxValue->Value;
+	}
+	else
+	{
+		throw ref new InvalidArgumentException();
+	}
 }
 
 Object^ EnumEqualsConverter::ConvertBack(Object^ value, TypeName targetType, Object^ parameter, String^ language)

@@ -1,7 +1,7 @@
-/*
+﻿/*
 * The MIT License (MIT)
 *
-* Copyright (c) 2013 Sibbiheim, LLC.
+* Copyright (c) 2014 Sibbiheim, LLC.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of
 * this software and associated documentation files (the "Software"), to deal in
@@ -21,27 +21,33 @@
 * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
-#include "FlyoutService.Flyout.h"
-#include "FlyoutService.FlyoutContext.h"
-#include "FlyoutService.Popup.h"
-#include "FlyoutService.SettingsFlyout.h"
-#include "FlyoutService.SupportNestedFlyouts.h"
-
+using System;
+using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml.Data;
 namespace Sibbiheim
 {
 	namespace Cascade
 	{
-		[Windows::Foundation::Metadata::WebHostHidden]
-		public ref class FlyoutService sealed
+		public sealed class ResourceStringConverter : IValueConverter
 		{
-		private:
+			public object Convert(object value, Type targetType, object parameter, string language)
+            {
+                string resourceId = value as string;
+                if (resourceId != null)
+                {
+                    ResourceLoader rl = new ResourceLoader();
+                    return rl.GetString(resourceId);
+                }
+                else
+                {
+                    return "";
+                }
+            }
 
-			FlyoutService();
-
-		public:
-
-			static void CloseContainingPopup(Windows::UI::Xaml::FrameworkElement^ element);
+			public object ConvertBack(object value, Type targetType, object parameter, string language)
+            {
+                throw new NotImplementedException();
+            }
 		};
 	}
 }

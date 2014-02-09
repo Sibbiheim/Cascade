@@ -251,6 +251,7 @@
     <ClCompile Include="CommandService.HyperlinkClickCommand.cpp" />
     <ClCompile Include="CommandService.ItemClickCommand.cpp" />
     <ClCompile Include="EnumEqualsConverter.cpp" />
+    <ClCompile Include="FlyoutService.cpp" />
     <ClCompile Include="FlyoutService.Flyout.cpp" />
     <ClCompile Include="FlyoutService.FlyoutContext.cpp" />
     <ClCompile Include="FlyoutService.Popup.cpp" />

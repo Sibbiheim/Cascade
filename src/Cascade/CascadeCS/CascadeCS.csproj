@@ -110,6 +110,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Compile Include="CommandService\CommandService.HyperlinkClickCommand.cs" />
     <Compile Include="CommandService\CommandService.ItemClickCommand.cs" />
     <Compile Include="CommandService\CommandService.cs" />
     <Compile Include="Converters\BooleanToBrushConverter.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Converters\CascadeConverter.cs" />
     <Compile Include="Converters\BooleanNegationConverter.cs" />
     <Compile Include="Converters\EnumEqualsConverter.cs" />
+    <Compile Include="Converters\ResourceStringConverter.cs" />
     <Compile Include="Converters\StrategyConverter.cs" />
     <Compile Include="Converters\NullToBooleanConverter.cs" />
     <Compile Include="FlyoutService\FlyoutService.cs" />
