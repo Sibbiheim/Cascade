@@ -28,7 +28,7 @@ namespace Sibbiheim
 	namespace Cascade
 	{
 		[Windows::Foundation::Metadata::WebHostHidden]
-		public ref class Lightbox sealed : public Windows::UI::Xaml::DependencyObject
+		public ref class Lightbox sealed
 		{
 		private:
 
@@ -41,6 +41,10 @@ namespace Sibbiheim
 
 			static Windows::UI::Xaml::DependencyProperty^ _contentMinHeightProperty;
 			static Windows::UI::Xaml::DependencyProperty^ _contentMaxHeightProperty;
+
+		private:
+
+			Lightbox();
 
 		public:
 

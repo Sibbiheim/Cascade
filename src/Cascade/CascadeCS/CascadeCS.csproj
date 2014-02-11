@@ -125,6 +125,7 @@
     <Compile Include="FlyoutService\FlyoutService.cs" />
     <Compile Include="FlyoutService\FlyoutService.Flyout.cs" />
     <Compile Include="FlyoutService\FlyoutService.FlyoutContext.cs" />
+    <Compile Include="Lightbox.cs" />
     <Compile Include="Selectors\StrategyTemplateSelector.cs" />
     <Compile Include="Selectors\StrategyStyleSelector.cs" />
   </ItemGroup>
@@ -133,6 +134,12 @@
     <Compile Include="FlyoutService\FlyoutService.SettingsFlyout.cs" />
     <Compile Include="FlyoutService\FlyoutService.SupportNestedFlyouts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

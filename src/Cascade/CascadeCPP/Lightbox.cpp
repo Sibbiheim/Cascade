@@ -46,6 +46,10 @@ DependencyProperty^ Lightbox::_contentMinHeightProperty = DependencyProperty::Re
 DependencyProperty^ Lightbox::_contentMaxHeightProperty = DependencyProperty::RegisterAttached(
 	"ContentMaxHeight", double::typeid, Lightbox::typeid, ref new PropertyMetadata(0.0));
 
+Lightbox::Lightbox()
+{
+}
+
 DependencyProperty^ Lightbox::BackgroundProperty::get()
 {
 	return _backgroundProperty;

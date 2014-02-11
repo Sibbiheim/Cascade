@@ -13,6 +13,9 @@
     <Filter Include="CommandService">
       <UniqueIdentifier>{2a65bb13-39a1-433c-beea-eecf01b3fca5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Themes">
+      <UniqueIdentifier>{790d8fe7-16db-48b4-8938-bf99ae78f6ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
